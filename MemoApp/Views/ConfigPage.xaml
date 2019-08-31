@@ -1,0 +1,95 @@
+﻿<Page
+	x:Class="MemoApp.Views.ConfigPage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="using:MemoApp.Views"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+	Loaded="{x:Bind ViewModel.PageLoaded}"
+	mc:Ignorable="d">
+
+	<StackPanel
+		Width="450"
+		HorizontalAlignment="Center"
+		Orientation="Vertical">
+
+		<StackPanel
+			x:Name="MenuHeader"
+			HorizontalAlignment="Right"
+			Orientation="Horizontal">
+			<ToggleButton
+				VerticalAlignment="Stretch"
+				Click="{x:Bind MoveMainPage}"
+				Content="{x:Bind Common.MainPageButtonLabel}" />
+			<ToggleButton
+				VerticalAlignment="Stretch"
+				Click="{x:Bind MoveRegisterTaskPage}"
+				Content="{x:Bind Common.RegisterPageButtonLabel}" />
+			<ToggleButton
+				VerticalAlignment="Stretch"
+				Click="{x:Bind MoveLogPage}"
+				Content="{x:Bind Common.LogPageButtonLabel}" />
+			<ToggleButton
+				VerticalAlignment="Stretch"
+				Click="{x:Bind MoveMemoSearchPage}"
+				Content="{x:Bind Common.MemoSearchPageButtonLabel}" />
+			<ToggleButton
+				VerticalAlignment="Stretch"
+				Click="{x:Bind MoveHowToPage}"
+				Content="{x:Bind Common.HowToPageButtonLabel}" />
+			<ToggleButton
+				VerticalAlignment="Stretch"
+				Background="DarkGray"
+				Click="{x:Bind MoveConfigPage}"
+				Content="{x:Bind Common.ConfigPageButtonLabel}" />
+		</StackPanel>
+		<Border
+			Margin="0,15,0,5"
+			BorderBrush="LightSlateGray"
+			BorderThickness="0,2,0,2">
+			<StackPanel>
+				<TextBlock
+					Margin="0,10,0,0"
+					FontWeight="Bold"
+					Text="{x:Bind ViewModel.LanguageConfigLabel}" />
+				<TextBlock Margin="10,10,0,0" Text="{x:Bind ViewModel.LanguageAnnotation}" />
+				<StackPanel Margin="50,10,0,10" Orientation="Horizontal">
+					<RadioButton Content="{x:Bind ViewModel.LanguageConfigENLabel}" IsChecked="{x:Bind ViewModel.IsLanguageConfigEN, Mode=TwoWay}" />
+					<RadioButton Content="{x:Bind ViewModel.LanguageConfigJALabel}" IsChecked="{x:Bind ViewModel.IsLanguageConfigJA, Mode=TwoWay}" />
+				</StackPanel>
+			</StackPanel>
+		</Border>
+		<Border
+			Margin="0,2,0,0"
+			BorderBrush="LightSlateGray"
+			BorderThickness="0,2,0,2">
+			<StackPanel>
+				<TextBlock
+					Margin="0,10,0,0"
+					FontWeight="Bold"
+					Text="{x:Bind ViewModel.NotificationToggleLabel}" />
+				<TextBlock Margin="10,10,0,0" Text="{x:Bind ViewModel.NotificationAnnotation}" />
+				<StackPanel Margin="50,10,0,10" Orientation="Horizontal">
+					<ToggleSwitch
+						IsOn="{x:Bind ViewModel.NotificationToggleValue, Mode=TwoWay}"
+						OffContent="{x:Bind ViewModel.NotificationToggleOffLabel}"
+						OnContent="{x:Bind ViewModel.NotificationToggleOnLabel}" />
+					<TextBox
+						MaxWidth="100"
+						HorizontalAlignment="Stretch"
+						Header="{x:Bind ViewModel.NotificationSpanMinuteLabel}"
+						InputScope="Number"
+						Text="{x:Bind ViewModel.NotificationSpanMinuteValue, Mode=TwoWay}" />
+				</StackPanel>
+			</StackPanel>
+		</Border>
+		<Button
+			Margin="0,5,5,5"
+			HorizontalAlignment="Right"
+			Click="{x:Bind ViewModel.UpdateConfig}"
+			Content="{x:Bind ViewModel.UpdateButtonLabel}" />
+
+	</StackPanel>
+
+</Page>
